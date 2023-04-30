@@ -43,6 +43,7 @@ const Cards = () => {
         className="buttonVeg"
         onClick={() => {
           setData(initialFoodData.filter((item) => item.isVeg));
+          
         }}
       ></button>
       <button
