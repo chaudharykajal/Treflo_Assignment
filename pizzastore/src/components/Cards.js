@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import Cardsdata from "./CardsData";
 import "./style.css";
 import { useDispatch } from "react-redux";
 import { ADD } from "../redux/actions/action";
@@ -10,7 +9,6 @@ import { Rating } from "./RatingComp";
 const Cards = () => {
   const [data, setData] = useState([]);
   const [initialFoodData, setInitialFoodData] = useState([]);
-  // console.log(data);
 
   useEffect(() => {
     fetch("http://run.mocky.io/v3/ec196a02-aaf4-4c91-8f54-21e72f241b68")
@@ -21,13 +19,6 @@ const Cards = () => {
         setInitialFoodData(data);
       })
       .catch((err) => console.error(err));
-    // let newData = axios.get(
-    //   "http://run.mocky.io/v3/ec196a02-aaf4-4c91-8f54-21e72f241b68"
-    // );
-    // newData.then((res) => {
-    //   console.log(res);
-    // });
-    // console.log(newData);
   }, []);
 
   const dispatch = useDispatch();
@@ -36,6 +27,7 @@ const Cards = () => {
     // console.log(e);
     dispatch(ADD(e));
   };
+  
 
   return (
     <div className="container mt-3">
@@ -43,20 +35,37 @@ const Cards = () => {
         className="buttonVeg"
         onClick={() => {
           setData(initialFoodData.filter((item) => item.isVeg));
-          
+
         }}
       ></button>
       <button
         className="buttonNonVeg"
         onClick={() => {
-          console.log(initialFoodData.filter((item) => !item.isVeg));
           setData(initialFoodData.filter((item) => !item.isVeg));
         }}
       ></button>
+      <button
+        className="buttonAll"
+        onClick={() => {
+          setData(initialFoodData);
+        }}
+      ></button>
+      {/* <form onSubmit={(e)=>{
+        filterData()
+      }}> */}
+      <label>Rating</label>
+        <input type="text" placeholder="rating" onChange={(e) => {
+          setData(initialFoodData.filter(item => e.target.value <= item.rating))
+        }} />
+    <label>Price</label>
+    <input type="text" placeholder="price" onChange={(e) => {
+          setData(initialFoodData.filter(item => e.target.value <= item.price))
+        }} />
+       
       <h2 className="text-center">PIZZA STORE</h2>
       {/* <p>{JSON.stringify(data)}</p> */}
       <div className="row d-flex justify-content-center align-items-center">
-        {data.map((element, id) => {
+        {data.length ?data.map((element, id) => {
           return (
             <>
               <Card
@@ -91,7 +100,8 @@ const Cards = () => {
               </Card>
             </>
           );
-        })}
+        })
+      : <>no data</>}
       </div>
     </div>
   );

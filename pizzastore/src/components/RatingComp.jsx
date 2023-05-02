@@ -6,6 +6,10 @@ export const Rating = ({ value, maxStars, starSize, color }) => {
   const fullStars = Math.floor(value);
   const halfStars = Math.round(value - fullStars);
   const emptyStars = maxStars - fullStars - halfStars;
+  //3.8
+  //3
+  //1
+  //5-3-1
 
   return (
     <div className="rating">
