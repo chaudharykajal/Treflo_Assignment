@@ -15,12 +15,6 @@ const Header = () => {
   // console.log(price);
 
   const getdata = useSelector((state) => state.cartreducer.carts);
-  const [getdataNew, setGetData] = useState([]);
-  useEffect(() => {
-    console.log("getData".getdata);
-    setGetData(getdataNew);
-  }, getdataNew);
-
   const dispatch = useDispatch();
 
   const [anchorEl, setAnchorEl] = useState(null);

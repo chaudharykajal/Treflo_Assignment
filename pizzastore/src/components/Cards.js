@@ -53,11 +53,11 @@ const Cards = () => {
       {/* <form onSubmit={(e)=>{
         filterData()
       }}> */}
-      <label>Rating</label>
+      <label className="filterrating">Rating</label>
         <input type="text" placeholder="rating" onChange={(e) => {
           setData(initialFoodData.filter(item => e.target.value <= item.rating))
         }} />
-    <label>Price</label>
+    <label className="filterprice">Price</label>
     <input type="text" placeholder="price" onChange={(e) => {
           setData(initialFoodData.filter(item => e.target.value <= item.price))
         }} />

@@ -89,4 +89,14 @@
   display: inline-block;
 }
 
+.filterrating{
+  height: 50px;
+  margin: 10px;
+}
+
+.filterprice{
+  height: 50px;
+  margin: 10px;
+}
+
 
